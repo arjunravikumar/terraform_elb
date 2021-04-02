@@ -1,10 +1,8 @@
-provider "aws"
-{
+provider "aws" {
 	region = "us-east-1"
 }
 
-resourse "aws_instance" "base"
-{
+resourse "aws_instance" "base" {
 	ami = "ami-0742b4e673072066f"
 	instance_type = "t2.micro"
 	count = 2
@@ -16,7 +14,7 @@ resourse "aws_instance" "base"
 					echo "hey i am $ (hostname -f)" > /var/www/html/index.html
 					service httpd start
 					chkconfig httpd on
-				EOF
+			EOF
 	tags={
 	Name = "newEc2_arjun_614${count.index}"
 	}
