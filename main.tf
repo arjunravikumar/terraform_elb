@@ -93,7 +93,7 @@ resource "aws_lb_target_group" "my-target-group" {
 resource "aws_lb" "my-aws-alb" {
 	name = "arjun-test-alb"
 	internal = false
-	security_group = [
+	security_groups = [
 	"${aws_security_group.allow_ports.id}",
 	]
 
