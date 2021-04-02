@@ -100,12 +100,7 @@ ip_address_type = "ipv4"
 load_balancer_type = "application"
 }
 
-resource "aws_lb_listener" "
-
-
-
-
--alb-listener" {
+resource "aws_lb_listener" "terraform-614-alb-listener" {
 	load_balancer_arn = aws_lb.my-aws-alb.arn
 	port = 80
 	protocol = "HTTP"
