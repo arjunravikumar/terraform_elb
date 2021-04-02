@@ -1,3 +1,3 @@
 output "url" {
-  value = aws_instance.base.*.public_ip
+  value = aws_lb.my-aws-alb.*.dns_name
 }
