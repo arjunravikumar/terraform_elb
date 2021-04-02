@@ -22,7 +22,7 @@ resource "aws_instance" "base" {
 resource "aws_eip" "myeip" {
 	count = length(aws_instance.base)
 	vpc = true
-	instance = "{$element(aws_instance.base.*.id,count.index)}"
+	instance = aws_instance.base.*.id
 
 	tags = {
 	Name = "eip-arjun_614${count.index+1}"
