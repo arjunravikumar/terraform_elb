@@ -66,7 +66,7 @@ resource "aws_security_group" "allow_ports" {
 }
 
 data "aws_subnet_ids" "subnet" {
-	vpc_id = "$aws_default_vpc.default.id"
+	vpc_id = aws_default_vpc.default.id
 }
 
 resource "aws_lb_target_group" "my-target-group" {
@@ -82,14 +82,14 @@ resource "aws_lb_target_group" "my-target-group" {
 	port = 80
 	protocol = "HTTP"
 	target_type = "instance"
-	vpc_id = "${aws_default_vpc.default.id}"
+	vpc_id = aws_default_vpc.default.id
 }
 
 resource "aws_lb" "my-aws-alb" {
 	name = "arjun-test-alb"
 	internal = false
 	security_groups = [
-	"${aws_security_group.allow_ports.id}",
+	aws_security_group.allow_ports.id,
 	]
 
 	subnets = data.aws_subnet_ids.subnet.ids
