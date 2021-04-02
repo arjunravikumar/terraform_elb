@@ -96,7 +96,7 @@ resource "aws_lb" "my-aws-alb" {
 	name = "arjun-test-alb"
 	internal = false
 	security_group = [
-	"${aws_security_group.allow_ports.id"}",
+	"${aws_security_group.allow_ports.id}",
 	]
 
 	subnets = data.aws_subnet_ids.subnet.ids
