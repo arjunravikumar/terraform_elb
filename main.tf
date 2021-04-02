@@ -10,7 +10,7 @@ resource "aws_instance" "base" {
 	user_data = <<-EOF
 					#!/bin/bash
 					yum install httpd -y
-					echo "hey i am $ (hostname -f)" > /var/www/html/index.html
+					echo "You are connected to $(hostname)" > /var/www/html/index.html
 					service httpd start
 					chkconfig httpd on
 			EOF
