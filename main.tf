@@ -15,7 +15,7 @@ resource "aws_instance" "base" {
 					chkconfig httpd on
 			EOF
 	tags={
-	Name = "newEc2_arjun_614${count.index}"
+	Name = "myec2_terraform_614${count.index}"
 	}
 }
 
@@ -25,7 +25,7 @@ resource "aws_eip" "myeip" {
 	instance = element(aws_instance.base.*.id,count.index)
 
 	tags = {
-	Name = "eip-arjun_614${count.index+1}"
+	Name = "eip-terraform_614${count.index+1}"
 	}
 }
 
@@ -86,7 +86,7 @@ resource "aws_lb_target_group" "my-target-group" {
 }
 
 resource "aws_lb" "my-aws-alb" {
-	name = "arjun-test-alb"
+	name = "terraform-614-lb"
 	internal = false
 	security_groups = [
 	aws_security_group.allow_ports.id,
@@ -94,13 +94,18 @@ resource "aws_lb" "my-aws-alb" {
 
 	subnets = data.aws_subnet_ids.subnet.ids
 	tags = {
-		Name = "arjun-test-alb"
+		Name = "terraform-614-lb"
 	}
 ip_address_type = "ipv4"
 load_balancer_type = "application"
 }
 
-resource "aws_lb_listener" "arjun-test-alb-listener" {
+resource "aws_lb_listener" "
+
+
+
+
+-alb-listener" {
 	load_balancer_arn = aws_lb.my-aws-alb.arn
 	port = 80
 	protocol = "HTTP"
