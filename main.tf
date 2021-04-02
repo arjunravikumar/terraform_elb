@@ -29,13 +29,13 @@ resource "aws_eip" "myeip" {
 	}
 }
 
-resource "aws_defualt_vpc" "default"{
+resource "aws_default_vpc" "default"{
 	tags = {
 	Name = "Default VPC"
 	}
 }
 
-resource "aws_security_group" "ssh_http" {
+resource "aws_security_group" "allow_ports" {
   name        = "ssh_http"
   description = "Allow SSH and HTTP"
 
