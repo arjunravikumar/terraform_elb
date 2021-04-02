@@ -6,7 +6,7 @@ resource "aws_instance" "base" {
 	ami = "ami-0742b4e673072066f"
 	instance_type = "t2.micro"
 	count = 2
-	key_name = "${aws_key_pair.keypair.key_name}"
+	key_name = "arjun614swen"
 	vpc_security_group_ids = [aws_security_group.allow_ports.id]
 	user_data = <<-EOF
 					#!/bin/bash
@@ -18,10 +18,6 @@ resource "aws_instance" "base" {
 	tags={
 	Name = "newEc2_arjun_614${count.index}"
 	}
-}
-
-resource "aws_key_pair" "keypair" {
-	key_name = "arjun614swen"
 }
 
 resource "aws_eip" "myeip" {
