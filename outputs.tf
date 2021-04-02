@@ -1,3 +1,3 @@
-output "url for the website" {
+output "url" {
   value = aws_lb.my-aws-alb.*.dns_name
 }
