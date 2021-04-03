@@ -3,17 +3,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "base" {
-	ami = "ami-0742b4e673072066f"
-	instance_type = "t2.micro"
-	count = 2
+	ami = var.ami
+	instance_type = var.instance_type
+	count = var.instance_count
 	vpc_security_group_ids = [aws_security_group.allow_ports.id]
-	user_data = <<-EOF
-					#!/bin/bash
-					yum install httpd -y
-					echo "You are connected to $(hostname)" > /var/www/html/index.html
-					service httpd start
-					chkconfig httpd on
-			EOF
+	user_data = file("website.sh")
 	tags={
 	Name = "myec2_terraform_614${count.index}"
 	}
